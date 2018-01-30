@@ -13,10 +13,30 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;//这里会报错，但是并不会影响
+    private UserMapper userMapper;
 
     @Override
     public List<User> findAllUser() {
         return userMapper.selectAllUser();
+    }
+
+    @Override
+    public User findUserById(String userId) {
+        return userMapper.selectUserById(userId);
+    }
+
+    @Override
+    public int changeUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    public int dropUser(String userId) {
+        return userMapper.deleteUser(userId);
+    }
+
+    @Override
+    public int addUser(User user) {
+        return userMapper.insertUser(user);
     }
 }

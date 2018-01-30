@@ -1,7 +1,7 @@
 package winter.model;
 
 public class User {
-    private Integer userId;
+    private String userId;
 
     private String userName;
 
@@ -9,11 +9,11 @@ public class User {
 
     private String phone;
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

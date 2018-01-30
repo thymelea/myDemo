@@ -5,6 +5,14 @@
     <title></title>
 </head>
 <body>
+<button type="button" class="btn btn-success" onclick="save()">添加</button>
+<form id="user_form">
+    <input type="hidden" id="id" name="id"/>
+    <input type="text" id="name" name="name"/>
+    <input type="text" id="password" name="password"/>
+    <input type="text" id="phone" name="phone"/>
+</form>
+<button type="button" class="btn btn-success"><a  onclick="updateUser(this)">保存修改</a></button>
 <table>
     <tbody>
     <tr>
@@ -16,8 +24,81 @@
         <td class="text-center" th:text="${user.userId}"></td>
         <td class="text-center" th:text="${user.userName}"></td>
         <td class="text-center" th:text="${user.phone}"></td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button  class="btn btn-default btn-sm" type="button"><a th:value="${user.userId}" onclick="findOneUser(this)">修改</a></button>
+            </div>
+        </td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button  class="btn btn-default btn-sm" type="button"><a th:value="${user.userId}" onclick="deleteUser(this)">删除</a></button>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>
+<script th:src="@{/jquery-3.3.1.js}"></script>
+<script th:src="@{/layer.js}"></script>
+<script th:inline="javascript">
+    $(document).ready(function(){
+
+    });
+    function updateUser (obj){
+        $.ajax({
+            type:'POST',
+            url:/*[[@{/updateUser}]]*/,
+            data:$("#user_form").serialize(),
+            success:function(result){
+                if (result.code == "0") {
+                    window.location.href=/*[[@{/allUser}]]*/;
+                }else {
+                    layer.msg(result.msg, {icon: 0, time: 2000}, function(){});
+                }
+            }
+        });
+    }
+    function findOneUser(obj){
+        var fid = $(obj).attr('value');
+        $('#id').val(fid)
+
+        $.post(/*[[@{/findOneUser}]]*/,{
+            id:fid
+        },function(result) {
+            $('#name').val(result.user.name);
+            $('#password').val(result.user.password);
+            $('#phone').val(result.user.phone);
+        })
+    }
+    function deleteUser (obj){
+        var fid = $(obj).attr('value');
+        $.post(/*[[@{/deleteUser}]]*/,{
+            fid:fid
+        },function(result) {
+            if (result.code == 0) {
+                layer.msg(result.msg, {icon: 0, time: 2000}, function(){
+                    window.location.href =/*[[@{/allUser}]]*/
+                });
+            }else{
+                layer.msg(result.msg, {icon: 0, time: 2000}, function(){
+
+                });
+            }
+        })
+    }
+    function save() {
+        $.ajax({
+            type:'POST',
+            url:/*[[@{/addUser}]]*/,
+            data:$("#user_form").serialize(),
+            success:function(result){
+                if (result.code == "0") {
+                    window.location.href=/*[[@{/allUser}]]*/;
+                }else {
+                    layer.msg(result.msg, {icon: 0, time: 2000}, function(){});
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>
