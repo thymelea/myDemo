@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <th class="text-center">用户id</th>
+        <th class="text-center">用户姓名</th>
+        <th class="text-center">电话</th>
+    </tr>
+    <tr th:each="user:${users}">
+        <td class="text-center" th:text="${user.userId}"></td>
+        <td class="text-center" th:text="${user.userName}"></td>
+        <td class="text-center" th:text="${user.phone}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
