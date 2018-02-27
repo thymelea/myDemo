@@ -1,13 +1,25 @@
 package winter.model;
 
-public class User {
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
+
+
+
+public class User{
     private String userId;
 
     private String userName;
 
+    private String loginName;
+
     private String password;
 
     private String phone;
+
+    private Integer isvalid;
 
     public String getUserId() {
         return userId;
@@ -22,7 +34,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -30,7 +42,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getPhone() {
@@ -38,6 +50,22 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public Integer getIsvalid() {
+        return isvalid;
+    }
+
+    public void setIsvalid(Integer isvalid) {
+        this.isvalid = isvalid;
     }
 }

@@ -13,4 +13,5 @@ public interface UserService {
     int changeUser(User user);
     int dropUser(String userId);
     int addUser(User user);
+    User findByLoginName(String loginName);
 }

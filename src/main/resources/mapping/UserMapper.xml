@@ -4,8 +4,10 @@
   <resultMap id="BaseResultMap" type="winter.model.User" >
     <id column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="isvalid" property="isvalid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     user_id, user_name, password, phone
@@ -14,6 +16,9 @@
     select
     *
     from t_user
+  </select>
+  <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT * FROM t_user WHERE login_name=#{loginName,jdbcType=VARCHAR}
   </select>
   <select id="selectUserById" resultMap="BaseResultMap" parameterType="java.lang.String">
     select
