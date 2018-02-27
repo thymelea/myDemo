@@ -26,6 +26,11 @@ import java.util.List;
 @Configuration
 public class DefineSecrityHandle extends WebMvcConfigurerAdapter {
 
+    /**
+     * 不需要登陆就可以访问的路径
+     * */
+    public static final String [] ALLAUTHS={"/","/login","/pub/**","/index**","/error**", "/ui/**", "/css/**", "/js/**","/fonts/**","/assets/**","/resource/**"};
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
