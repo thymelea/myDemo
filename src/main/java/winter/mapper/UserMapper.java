@@ -11,7 +11,7 @@ import winter.model.User;
 
 import java.util.List;
 
-public interface UserMapper extends Mapper<T>, MySqlMapper<T> {
+public interface UserMapper{
 
     List<User> selectAllUser();
     User selectUserById(String UserId);
