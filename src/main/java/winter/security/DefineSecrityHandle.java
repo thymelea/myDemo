@@ -20,9 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.nio.charset.Charset;
 import java.util.List;
 
-/**
- * Created by developer_hyaci on 2015/9/24.
- */
+
 @Configuration
 public class DefineSecrityHandle extends WebMvcConfigurerAdapter {
 

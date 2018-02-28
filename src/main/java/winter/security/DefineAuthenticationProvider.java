@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by developer_hyaci on 2016/2/17.
  * 登陆用户的权限验证
  */
 @Component

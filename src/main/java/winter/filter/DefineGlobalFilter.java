@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by developer_hyaci on 2017/7/4.
- */
+
 @Configuration
 public class DefineGlobalFilter extends OrderedCharacterEncodingFilter {
 

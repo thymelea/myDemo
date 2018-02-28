@@ -3,9 +3,7 @@ package winter.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Created by developer_hyaci on 2017/8/23.
- */
+
 @Configuration
 @ConfigurationProperties(prefix="proj.sys.define")
 public class SysConfig {

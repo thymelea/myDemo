@@ -18,9 +18,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- * Created by developer_hyaci on 2015/9/24.
- */
 
 @Configuration
 public class ASqlBilindSecrityFilter implements Filter {

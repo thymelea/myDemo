@@ -13,7 +13,6 @@ import java.io.IOException;
 
 /**
  * 登陆成功之后的一些相关处理
- * @author developer_hyaci
  *
  */
 @Component

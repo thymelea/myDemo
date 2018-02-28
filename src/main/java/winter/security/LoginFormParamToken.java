@@ -3,7 +3,6 @@ package winter.security;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 /**
- * Created by developer_hyaci on 2016/2/19.
  * 封装登陆Form中所有的属性；
  */
 public class LoginFormParamToken extends UsernamePasswordAuthenticationToken {
