@@ -12,16 +12,6 @@ public class SysConfig {
     private String deleteEnableDeleteLogDate;
     private String deleteAllLogMonth;
 
-
-
-
-
-
-
-
-
-
-
     public String getProjName() {
         return projName;
     }

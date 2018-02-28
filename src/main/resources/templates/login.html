@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<form th:action="@{/login}" id="loginForm" name="loginfrom" accept-charset="utf-8" method="post">
+    <label class="label-tips" id="user-name" for="u">账号:</label>
+    <input type="text" id="u" name="username" class="inputstyle"/>
+    <div>
+        <label class="lable-tips" id="user-pwd" for="password">密码:</label>
+        <input type="password" id="password" name="password" class="inputstyle" />
+    </div>
+    <input type="submit" id="loginBtn" name="登录"/>
+    <a href="register.html" class="zcxy" target="_blank">注册</a>
+</form>
+
+</body>
+<script style="javascript" th:src="@{/RSA.js}"/>
+<script style="javascript" th:src="@{/jquery-3.3.1.js}"/>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var RSAPUBEXPONENT = /*[[${RSAPUBEXPONENT}]]*/;
+    var RSAPUBMOD = /*[[${RSAPUBMOD}]]*/;
+    jQuery(function () {
+        jQuery('#loginBtn').on('click', function () {
+
+            var name=document.getElementById("user-name").value;
+            var pwd=document.getElementById("user-pwd").value;
+
+            if ((name==undefined|| name.trim()=='') && ( pwd==undefined || pwd.trim() == '')) {
+                alert('请输入正确的用户名和密码！');
+            } else {
+                var key = new RSAUtils.getKeyPair(RSAPUBEXPONENT, "",RSAPUBMOD);
+                var pwd = RSAUtils.encryptedString(key,pwd.split("").reverse().join(""));
+                document.getElementById("user-pwd").value=pwd;
+                document.getElementById("loginForm").submit();
+            }
+        });
+
+        var winH = $(window).height(),
+            $loginWrap = $('.login-wrap'),
+            loginWrapH = $loginWrap.height();
+
+        $loginWrap.css('marginTop', (winH - loginWrapH) / 2)
+
+    });
+    /*]]>*/
+</script>
+</html>

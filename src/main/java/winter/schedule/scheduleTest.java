@@ -9,9 +9,8 @@ import org.springframework.stereotype.Component;
 public class scheduleTest {
     private final static Logger logger = LoggerFactory.getLogger(scheduleTest.class);
 
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void test(){
         System.out.println("aaa");
-        logger.error("rrrrrrrrrrrrrr");
     }
 }

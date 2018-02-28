@@ -22,6 +22,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/loginSuccess.html")
+    public String loginSuccess(HttpServletRequest request) {
+        //登陆成功，可以执行一些处理；
+        //User user=UserService.getUserFromSession(request);
+        System.out.println("zhang3");
+
+        return "forward:/allUser";
+    }
+
     @RequestMapping(value = "/allUser")
    public String getAllUser(HttpServletRequest request, Model model){
         List<User> userList=userService.findAllUser();
