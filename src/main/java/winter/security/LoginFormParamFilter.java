@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.security.interfaces.RSAPrivateKey;
 
 /**
- * Created by developer_hyaci on 2016/2/17.
  * 过滤登陆请求，获取到所有的登陆时输入的值，封装为其他对象往内部传递
  */
 public class LoginFormParamFilter extends UsernamePasswordAuthenticationFilter {
