@@ -46,11 +46,11 @@
     function updateUser (obj){
         $.ajax({
             type:'POST',
-            url:/*[[@{/updateUser}]]*/,
+            url:/*[[@{/pub/updateUser}]]*/,
             data:$("#user_form").serialize(),
             success:function(result){
                 if (result.code == "0") {
-                    window.location.href=/*[[@{/allUser}]]*/;
+                    window.location.href=/*[[@{/pub/allUser}]]*/;
                 }else {
                     layer.msg(result.msg, {icon: 0, time: 2000}, function(){});
                 }
@@ -61,7 +61,7 @@
         var fid = $(obj).attr('value');
         $('#id').val(fid)
 
-        $.post(/*[[@{/findOneUser}]]*/,{
+        $.post(/*[[@{/pub/findOneUser}]]*/,{
             id:fid
         },function(result) {
             $('#name').val(result.user.name);
@@ -71,12 +71,12 @@
     }
     function deleteUser (obj){
         var fid = $(obj).attr('value');
-        $.post(/*[[@{/deleteUser}]]*/,{
+        $.post(/*[[@{/pub/deleteUser}]]*/,{
             fid:fid
         },function(result) {
             if (result.code == 0) {
                 layer.msg(result.msg, {icon: 0, time: 2000}, function(){
-                    window.location.href =/*[[@{/allUser}]]*/
+                    window.location.href =/*[[@{/pub/allUser}]]*/
                 });
             }else{
                 layer.msg(result.msg, {icon: 0, time: 2000}, function(){
@@ -88,11 +88,11 @@
     function save() {
         $.ajax({
             type:'POST',
-            url:/*[[@{/addUser}]]*/,
+            url:/*[[@{/pub/addUser}]]*/,
             data:$("#user_form").serialize(),
             success:function(result){
                 if (result.code == "0") {
-                    window.location.href=/*[[@{/allUser}]]*/;
+                    window.location.href=/*[[@{/pub/allUser}]]*/;
                 }else {
                     layer.msg(result.msg, {icon: 0, time: 2000}, function(){});
                 }
