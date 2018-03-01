@@ -45,6 +45,6 @@
   </delete>
   <insert id="insertUser" parameterType="winter.model.User">
     INSERT INTO t_user VALUES (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{phone,jdbcType=VARCHAR})
+      #{phone,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},#{isvalid,jdbcType=VARCHAR})
   </insert>
 </mapper>

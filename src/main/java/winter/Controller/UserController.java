@@ -3,6 +3,7 @@ package winter.Controller;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @RequestMapping("/loginSuccess.html")
     public String loginSuccess(HttpServletRequest request) {
@@ -76,13 +79,18 @@ public class UserController {
         messageMap.put("msg","删除成功！");
         return messageMap;
     }
+    @RequestMapping("/pub/register")
+    public String register(HttpServletRequest request, Model model){
+        return "/addUser";
+    }
     @RequestMapping("/pub/addUser")
-    public @ResponseBody Map<String,Object> adUser(@Param("name")String name,@Param("password")String password,@Param("phone")String phone){
+    public @ResponseBody Map<String,Object> adUser(@Param("loginName")String loginName,@Param("name")String name,@Param("password")String password,@Param("phone")String phone){
         Map<String,Object> messageMap =new HashMap<>();
         User user=new User();
         user.setUserId(UUID.randomUUID().toString());
         user.setUserName(name);
-        user.setPassword(password);
+        user.setLoginName(loginName);
+        user.setPassword(this.passwordEncoder.encode(password));
         user.setPhone(phone);
         try {
             userService.addUser(user);

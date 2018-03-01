@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<script style="javascript"  th:src="@{../js/jquery/jquery-3.3.1.js}"/>
+<script style="javascript"  th:src="@{../js/layer/layer.js}"/>
+<body>
+<button type="button" class="btn btn-success" onclick="save()">添加</button>
+<form id="user_form">
+    <label>登录名</label>
+    <input type="text" id="loginName" name="loginName"/><br/>
+    <label>姓名</label>
+    <input type="text" id="name" name="name"/><br/>
+    <label>密码</label>
+    <input type="text" id="password" name="password"/><br/>
+    <label>手机</label>
+    <input type="text" id="phone" name="phone"/><br/>
+</form>
+
+<script th:inline="javascript">
+    function save() {
+        $.ajax({
+            type:'POST',
+            url:/*[[@{/pub/addUser}]]*/,
+            data:$("#user_form").serialize(),
+            success:function(result){
+                if (result.code == "0") {
+                    window.location.href=/*[[@{/}]]*/;
+                }else {
+                    layer.msg(result.msg, {icon: 0, time: 2000}, function(){});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

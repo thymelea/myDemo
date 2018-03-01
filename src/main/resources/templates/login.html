@@ -13,9 +13,8 @@
         <input type="password" id="user-pwd"  name="password" class="inputstyle" />
     </div>
     <input type="submit" id="loginBtn" name="登录"/>
-    <a href="register.html" class="zcxy" target="_blank">注册</a>
+    <a th:href="@{/pub/register}" >注册</a>
 </form>
-
 </body>
 <script style="javascript" th:src="@{js/rsa/RSA.js}"/>
 <script style="javascript" th:src="@{js/jquery/jquery-3.3.1.js}"/>
@@ -46,6 +45,17 @@
         $loginWrap.css('marginTop', (winH - loginWrapH) / 2)
 
     });
+    
+    function register() {
+//        $.ajax({
+//            type:'POST',
+//            url:/*[[@{/pub/register}]]*/,
+//            success:function(result) {
+//                document.write(result)
+//            }
+//        })
+//        $('registerForm').submit();
+    }
     /*]]>*/
 </script>
 </html>
