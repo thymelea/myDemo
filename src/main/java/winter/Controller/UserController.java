@@ -36,14 +36,14 @@ public class UserController {
         model.addAttribute("users",userList);
         return "/index";
    }
-    @RequestMapping(value = "/findOneUser")
+    @RequestMapping(value = "/pub/findOneUser")
     public @ResponseBody Map<String,Object> getOneUser(HttpServletRequest request, @Param("fid")String id){
         Map<String,Object> messageMap =new HashMap<>();
        User user=userService.findUserById(id);
         messageMap.put("user",user);
         return messageMap;
     }
-   @RequestMapping("/updateUser")
+   @RequestMapping("/pub/updateUser")
     public @ResponseBody Map<String,Object> upUser(@Param("fid")String id,@Param("name")String name,@Param("password")String password,@Param("phone")String phone){
 //    User user=userService.findUserById(id);
        Map<String,Object> messageMap =new HashMap<>();
@@ -62,7 +62,7 @@ public class UserController {
        messageMap.put("msg","更新成功！");
        return messageMap;
    }
-    @RequestMapping("/deleteUser")
+    @RequestMapping("/pub/deleteUser")
     public @ResponseBody Map<String,Object> deUser(@Param("fid")String fid){
 
         Map<String,Object> messageMap =new HashMap<>();
@@ -76,7 +76,7 @@ public class UserController {
         messageMap.put("msg","删除成功！");
         return messageMap;
     }
-    @RequestMapping("/addUser")
+    @RequestMapping("/pub/addUser")
     public @ResponseBody Map<String,Object> adUser(@Param("name")String name,@Param("password")String password,@Param("phone")String phone){
         Map<String,Object> messageMap =new HashMap<>();
         User user=new User();
