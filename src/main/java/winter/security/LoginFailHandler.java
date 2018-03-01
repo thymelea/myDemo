@@ -15,7 +15,6 @@ import java.io.IOException;
 public class LoginFailHandler extends SimpleUrlAuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        System.out.println("zhang5");
         this.setDefaultFailureUrl("/index.html");
         this.setUseForward(true);
         request.setAttribute("error",exception.getMessage());

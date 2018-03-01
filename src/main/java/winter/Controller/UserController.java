@@ -26,12 +26,11 @@ public class UserController {
     public String loginSuccess(HttpServletRequest request) {
         //登陆成功，可以执行一些处理；
         //User user=UserService.getUserFromSession(request);
-        System.out.println("zhang3");
 
-        return "forward:/allUser";
+        return "forward:/pub/allUser";
     }
 
-    @RequestMapping(value = "/allUser")
+    @RequestMapping(value = "pub/allUser")
    public String getAllUser(HttpServletRequest request, Model model){
         List<User> userList=userService.findAllUser();
         model.addAttribute("users",userList);

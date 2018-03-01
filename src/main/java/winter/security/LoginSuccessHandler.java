@@ -24,7 +24,6 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 	public void onAuthenticationSuccess(HttpServletRequest request,
 			HttpServletResponse response, Authentication authentication)
 			throws ServletException, IOException {
-		System.out.println("zhang2");
 		// TODO Auto-generated method stub
 		//给用户附加当前登陆时间并更新当前用户（在用户验证过程中，对用户存在信息补全），
 		SecurityUser securityUser =(SecurityUser)authentication.getPrincipal();

@@ -31,7 +31,6 @@ public class DefineSecrityHandle extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        System.out.println("zhang4");
         registry.addViewController("/login").setViewName("login");
     }
 

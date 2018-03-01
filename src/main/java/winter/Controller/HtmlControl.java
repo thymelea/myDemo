@@ -36,7 +36,6 @@ public class HtmlControl{
     @RequestMapping(value={"/index.html"})
     public String index(HttpServletResponse response, HttpServletRequest request, Model model) {
         //登录页面
-        System.out.println("zhang1");
         return "login";
     }
 

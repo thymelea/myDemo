@@ -6,19 +6,19 @@
 </head>
 <body>
 <form th:action="@{/login}" id="loginForm" name="loginfrom" accept-charset="utf-8" method="post">
-    <label class="label-tips" id="user-name" for="u">账号:</label>
-    <input type="text" id="u" name="username" class="inputstyle"/>
+    <label class="label-tips" name="username" for="user-name">账号:</label>
+    <input type="text" id="user-name" name="username" class="inputstyle"/>
     <div>
-        <label class="lable-tips" id="user-pwd" for="password">密码:</label>
-        <input type="password" id="password" name="password" class="inputstyle" />
+        <label class="lable-tips" id="password" for="password">密码:</label>
+        <input type="password" id="user-pwd"  name="password" class="inputstyle" />
     </div>
     <input type="submit" id="loginBtn" name="登录"/>
     <a href="register.html" class="zcxy" target="_blank">注册</a>
 </form>
 
 </body>
-<script style="javascript" th:src="@{/RSA.js}"/>
-<script style="javascript" th:src="@{/jquery-3.3.1.js}"/>
+<script style="javascript" th:src="@{js/rsa/RSA.js}"/>
+<script style="javascript" th:src="@{js/jquery/jquery-3.3.1.js}"/>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var RSAPUBEXPONENT = /*[[${RSAPUBEXPONENT}]]*/;
