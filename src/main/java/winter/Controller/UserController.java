@@ -92,6 +92,7 @@ public class UserController {
         user.setLoginName(loginName);
         user.setPassword(this.passwordEncoder.encode(password));
         user.setPhone(phone);
+        user.setIsvalid(1);
         try {
             userService.addUser(user);
         }catch (Exception e){

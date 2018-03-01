@@ -12,6 +12,12 @@
         <label class="lable-tips" id="password" for="password">密码:</label>
         <input type="password" id="user-pwd"  name="password" class="inputstyle" />
     </div>
+    <div>
+        <label>验证码</label>
+        <input type="text" name="vrifyCode" /><br/>
+        <!-- <img alt="这是图片" src="/img/001.png"/> -->
+        <img alt="验证码" th:src="@{/pub/getKaptchaImage}" />
+    </div>
     <input type="submit" id="loginBtn" name="登录"/>
     <a th:href="@{/pub/register}" >注册</a>
 </form>
@@ -19,6 +25,15 @@
 <script style="javascript" th:src="@{js/rsa/RSA.js}"/>
 <script style="javascript" th:src="@{js/jquery/jquery-3.3.1.js}"/>
 <script th:inline="javascript">
+        $(document).ready(function(){
+//        $.ajax({
+//            type:'POST',
+//            url:/*[[@{/pub/getKaptchaImage}]]*/,
+//            success:function(result) {
+//
+//            }
+//        })
+        });
     /*<![CDATA[*/
     var RSAPUBEXPONENT = /*[[${RSAPUBEXPONENT}]]*/;
     var RSAPUBMOD = /*[[${RSAPUBMOD}]]*/;

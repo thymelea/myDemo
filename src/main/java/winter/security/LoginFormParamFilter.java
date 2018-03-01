@@ -1,10 +1,12 @@
 package winter.security;
 
 
+import com.google.code.kaptcha.Constants;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.ModelAndView;
 import winter.utils.RSAUtils;
 import winter.utils.Statements;
 
@@ -19,6 +21,12 @@ public class LoginFormParamFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        ModelAndView andView = new ModelAndView();
+        String captchaId = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        String parameter = request.getParameter("vrifyCode");
+        if (!captchaId.equals(parameter)||parameter==null) {
+            throw new BadCredentialsException("错误的验证码！");
+        }
         //从request中去获取登陆时输入属性项数据封装为LoginFormParamToken对象
         String userName=request.getParameter("username");
         String password=request.getParameter("password");
