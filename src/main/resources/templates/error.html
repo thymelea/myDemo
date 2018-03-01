@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!--<title th:text="${PROJNAME}"></title>-->
+    <!--<link th:href="@{/resource/skin/css/index.css}" rel="stylesheet" type="text/css" />-->
+</head>
+<body th:fragment="body">
+    <div class="sitenav">
+        <div class="sitenav-bd">
+            <ul class="sitenav-bd-l">
+                <li class="menu login-info">
+                    <div class="menu-login-not">
+                        您好，欢迎访问<span th:text="${PROJNAME}"></span>&nbsp;&nbsp;│
+                        <a href="javascript:void(0);" onclick="window.history.back();">返回</a>&nbsp;&nbsp;│
+                        <span th:if="${errorUnique!=null}" th:text="${errorUnique}" id="logUnique"></span>
+                        <span th:if="${errorUnique==null}" th:text="${error}"></span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="sitenav-bd-r">
+            </ul>
+        </div>
+    </div>
+    <input type="hidden" th:value="${error}" />
+    <input type="hidden" th:value="${state}" />
+    <div class="wrap-1 cl" th:if="${status==404}" style="background:url(/resource/images/err-404.jpg) no-repeat center">
+    </div>
+
+    <div class="wrap-1 cl" th:if="${status!=404}" style="background:url(/resource/images/err-500.jpg) no-repeat center">
+    </div>
+
+</body>
+</html>
