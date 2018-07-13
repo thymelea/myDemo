@@ -3,6 +3,8 @@ package winter.Controller;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import winter.model.User;
 import winter.service.user.UserService;
+import winter.service.user.impl.RedisService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
 public class UserController {
@@ -24,6 +28,16 @@ public class UserController {
     private UserService userService;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private RedisTemplate redisTemplate;//注入redisService类
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisService redisService;
+
+    private ConcurrentHashMap<String, Object> pool = new ConcurrentHashMap<>();
 
     @RequestMapping("/loginSuccess.html")
     public String loginSuccess(HttpServletRequest request) {
@@ -36,6 +50,9 @@ public class UserController {
     @RequestMapping(value = "pub/allUser")
    public String getAllUser(HttpServletRequest request, Model model){
         List<User> userList=userService.findAllUser();
+        pool.put("list", userList);
+        redisService.setObj("listRedis", userList);
+        pool.put("listMap", userList);
         model.addAttribute("users",userList);
         return "/index";
    }

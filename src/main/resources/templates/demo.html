@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #content{width:600px;height:200px;}
+    </style>
+    <meta charset="utf-8"/>
+</head>
+<body id="body">
+<textarea id="content" rows="40" cols="500"></textarea>
+<div class="btn">
+    <input type="button" value="清空" onclick="reset()"/>
+    <input type="button" value="发送" onclick="send()">
+</div>
+<script type="text/javascript">
+    var socket = new WebSocket('ws://127.0.0.1:80/websocket/ws');
+
+    //创建Socket
+    socket.onopen = function(event) {
+
+        //向服务器发送数据
+        //socket.send('哈哈哈哈');
+
+        //接收数据事件
+        socket.onmessage = function(event) {
+            body.innerHTML+="<br/>对方："+event.data;
+        };
+
+        // socket关闭事件
+        socket.onclose = function(event) {
+            body.innerHTML+="<br/>系统：已和服务器断开连接！！！";
+        };
+
+        //关闭socket
+        //socket.close()
+    };
+
+    //-----------
+    var body=document.getElementById("body");
+    function send(){
+        var msg=document.getElementById("content").value;//获取输入框内容
+        socket.send(msg);//发送消息
+        reset();//清空输入框
+        body.innerHTML+="<br/>我："+msg;
+    }
+
+    function reset(){
+        document.getElementById("content").value="";
+    }
+</script>
+</body>
+</html>
