@@ -30,7 +30,7 @@ public class kaptchaConfig {
 //        水纹com.google.code.kaptcha.impl.WaterRipple
 //        鱼眼com.google.code.kaptcha.impl.FishEyeGimpy
 //        阴影com.google.code.kaptcha.impl.ShadowGimpy
-        properties.setProperty("kaptcha.obscurificator.impl","com.google.code.kaptcha.impl.WaterRipple");//图片样式
+        properties.setProperty("kaptcha.obscurificator.impl","com.google.code.kaptcha.impl.ShadowGimpy");//图片样式
         Config config=new Config(properties);
         defaultKaptcha.setConfig(config);
         return defaultKaptcha;

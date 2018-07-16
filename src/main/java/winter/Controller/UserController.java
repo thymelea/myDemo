@@ -59,6 +59,8 @@ public class UserController {
     @RequestMapping(value = "/pub/findOneUser")
     public @ResponseBody Map<String,Object> getOneUser(HttpServletRequest request, @Param("fid")String id){
         Map<String,Object> messageMap =new HashMap<>();
+        List<User> userList= (List<User>) redisService.getObj("listRedis");
+        userList.size();
        User user=userService.findUserById(id);
         messageMap.put("user",user);
         return messageMap;

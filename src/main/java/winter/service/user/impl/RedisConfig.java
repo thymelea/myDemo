@@ -32,28 +32,29 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import winter.Controller.UserController;
 
 import javax.validation.constraints.NotNull;
 
+
+@Component
 @Configuration
 @EnableCaching
 @Validated
-@ConfigurationProperties(prefix="spring.redis")
+//@ConfigurationProperties(prefix="spring.redis")
 public class RedisConfig extends CachingConfigurerSupport {
     protected static final Logger logger = LoggerFactory.getLogger(UserController.class);
-//    @Value("${spring.redis.host}")
-    @NotNull
+    @Value("${spring.redis.host}")
     String host;
-//    @Value("${spring.redis.port}")
-    @NotNull
+    @Value("${spring.redis.port}")
     int port;
-//    @Value("${spring.redis.password}")
+    @Value("${spring.redis.password}")
     String password;
-//    @Value("${spring.redis.database}")
+    @Value("${spring.redis.database}")
     int database;
-//    @Value("${spring.redis.timeout}")
+    @Value("${spring.redis.timeout}")
     int timeout;
 
     @Bean(name = "jedisConnectionFactoryB")

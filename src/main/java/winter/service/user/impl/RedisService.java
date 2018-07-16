@@ -91,6 +91,7 @@ public class RedisService {
     public void setObj(Object o1, Object o2) {
         valOpsObj.set(o1, o2);
     }
+    public void setListObj(){}
 
     /**
      * 删除Obj缓存
